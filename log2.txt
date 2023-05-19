@@ -1,0 +1,52 @@
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.27kB done
+#1 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 transferring context: 2B done
+#2 DONE 0.0s
+
+#3 resolve image config for docker.io/docker/dockerfile:1
+#3 DONE 0.8s
+
+#4 docker-image://docker.io/docker/dockerfile:1@sha256:39b85bbfa7536a5feceb7372a0817649ecb2724562a38360f4d6a7782a409b14
+#4 CACHED
+
+#5 [internal] load metadata for docker.io/library/golang:1.20-alpine
+#5 DONE 0.0s
+
+#6 [base 1/5] FROM docker.io/library/golang:1.20-alpine
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 22.86kB 0.0s done
+#7 DONE 0.0s
+
+#8 [base 2/5] WORKDIR /src
+#8 CACHED
+
+#9 [base 3/5] COPY go.mod go.sum .
+#9 DONE 0.1s
+
+#10 [base 4/5] RUN --mount=type=cache,target=/go/pkg/mod/     go mod download -x
+#10 0.545 # get https://proxy.golang.org/github.com/go-chi/chi/v5/@v/v5.0.8.mod
+#10 0.648 # get https://proxy.golang.org/github.com/go-chi/chi/v5/@v/v5.0.8.mod: 200 OK (0.103s)
+#10 0.650 # get https://proxy.golang.org/github.com/go-chi/chi/v5/@v/v5.0.8.info
+#10 0.657 # get https://proxy.golang.org/github.com/go-chi/chi/v5/@v/v5.0.8.info: 200 OK (0.007s)
+#10 0.663 # get https://proxy.golang.org/github.com/go-chi/chi/v5/@v/v5.0.8.zip
+#10 0.670 # get https://proxy.golang.org/github.com/go-chi/chi/v5/@v/v5.0.8.zip: 200 OK (0.007s)
+#10 DONE 0.8s
+
+#11 [base 5/5] COPY . .
+#11 DONE 0.1s
+
+#12 [build-client 1/1] RUN --mount=type=cache,target=/go/pkg/mod/     go build -o /bin/client ./cmd/client
+#12 DONE 18.8s
+
+#13 [client 1/1] COPY --from=build-client /bin/client /bin/
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 writing image sha256:6dc4dcea47e5271fc3df641fa9454ef5a22254e00025119faa14beb3629287b7 done
+#14 DONE 0.0s
